@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
 import Button from '../../UI/Button/Button';
-import './CourseInput.css';
-import styled from 'styled-components';
+import styles from './CourseInput.module.css';
+/* import styled from 'styled-components'; */
 
 
-const FormControl = styled.div`
-
+/* const FormControl = styled.div`
 
   margin: 0.5rem 0;
 
+}
 
 & label {
   font-weight: bold;
@@ -38,7 +38,7 @@ const FormControl = styled.div`
 }
 
 
-`
+` */
 
 
 const CourseInput = props => {
@@ -65,11 +65,15 @@ const CourseInput = props => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-     <FormControl invalid={!isValid} /* className={!isValid && 'invalid'} */ >
-        <label>Course Goal</label>
+     <div className={`${styles['form-control']} ${!isValid && styles.invalid}`}/*  invalid={!isValid} oppure className={!isValid && 'invalid'} */ >
+       <div className="flex" >
+        <label >Course Goal</label>
+        </div>
         <input type="text" onChange={goalInputChangeHandler} />
-        </FormControl>
+        </div>
+        <div className="flex">
       <Button type="submit">Add Goal</Button>
+      </div>
     </form>
   );
 };
